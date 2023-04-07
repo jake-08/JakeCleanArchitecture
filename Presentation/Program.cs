@@ -1,7 +1,10 @@
 using CleanArch.Infra.Data.Context;
+using CleanArch.Infra.IoC;
 using CleanArch.Mvc.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,9 @@ builder.Services.AddDbContext<UniversityDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("UniversityDbConnection"));
 });
+
+// Register Services
+RegisterServices(builder.Services);
 
 var app = builder.Build();
 
@@ -47,3 +53,9 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+
+void RegisterServices(IServiceCollection services)
+{
+    DependencyContainer.RegisterServices(services);
+}
