@@ -1,8 +1,8 @@
-﻿@model CleanArch.Application.ViewModels.CourseViewModel
+﻿@model IEnumerable<CleanArch.Application.ViewModels.CourseViewModel>
 
 <div class="container body-content">
     <div class="row course-content">
-        @foreach (var course in Model.Courses)
+        @foreach (var course in Model)
         {
             <div class="col-md-4 text-center">
                 <div class="course-image-container">
