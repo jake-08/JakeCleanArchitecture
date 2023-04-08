@@ -1,3 +1,4 @@
+using CleanArc.Api.Configurations;
 using CleanArch.Infra.Data.Context;
 using CleanArch.Infra.IoC;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,9 @@ builder.Services.AddDbContext<UniversityDbContext>(options =>
 
 // Add MediatR in dotnet 7
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+// Register AutoMapper
+builder.Services.RegisterAutoMapper();
 
 var app = builder.Build();
 
