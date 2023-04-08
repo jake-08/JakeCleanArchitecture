@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\CleanArch.Application.csproj" />
+    <ProjectReference Include="..\..\CleanArch.Infra.Bus\CleanArch.Infra.Bus.csproj" />
     <ProjectReference Include="..\..\Infrastructure.Data\CleanArch.Infra.Data.csproj" />
   </ItemGroup>
 

@@ -3,8 +3,7 @@ using CleanArch.Infra.IoC;
 using CleanArch.Mvc.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +21,9 @@ builder.Services.AddDbContext<UniversityDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("UniversityDbConnection"));
 });
+
+// Add MediatR in dotnet 7
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 // Register Services
 RegisterServices(builder.Services);
